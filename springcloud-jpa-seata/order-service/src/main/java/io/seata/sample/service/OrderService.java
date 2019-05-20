@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import io.seata.sample.entity.Order;
 import io.seata.sample.feign.UserFeignClient;
 import io.seata.sample.repository.OrderDAO;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,8 +37,18 @@ public class OrderService {
 
         orderDAO.save(order);
 
+//        try{
+//            userFeignClient.debit(userId, orderMoney);
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
         userFeignClient.debit(userId, orderMoney);
-
     }
 
+//    @GlobalTransactional
+    public void create2(String userId, String commodityCode, Integer count){
+        create(userId,commodityCode,count);
+        BigDecimal orderMoney = new BigDecimal(count).multiply(new BigDecimal(5));
+        userFeignClient.debit(userId,orderMoney);
+    }
 }
