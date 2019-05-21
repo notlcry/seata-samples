@@ -1,8 +1,8 @@
 package io.seata.sample.service;
 
+import com.codingapi.txlcn.tc.annotation.LcnTransaction;
 import io.seata.sample.feign.OrderFeignClient;
 import io.seata.sample.feign.StorageFeignClient;
-import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +27,8 @@ public class BusinessService {
      * @param commodityCode
      * @param orderCount
      */
-    @GlobalTransactional
+//    @GlobalTransactional
+    @LcnTransaction
     public void purchase(String userId, String commodityCode, int orderCount) {
         storageFeignClient.deduct(commodityCode, orderCount);
 

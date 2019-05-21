@@ -2,10 +2,10 @@ package io.seata.sample.service;
 
 import java.math.BigDecimal;
 
+import com.codingapi.txlcn.tc.annotation.LcnTransaction;
 import io.seata.sample.entity.Order;
 import io.seata.sample.feign.UserFeignClient;
 import io.seata.sample.repository.OrderDAO;
-import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +24,7 @@ public class OrderService {
     @Autowired
     private OrderDAO orderDAO;
 
+    @LcnTransaction
     @Transactional
     public void create(String userId, String commodityCode, Integer count) {
 

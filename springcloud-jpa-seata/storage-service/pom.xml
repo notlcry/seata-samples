@@ -49,6 +49,23 @@
             <groupId>io.seata</groupId>
             <artifactId>seata-spring</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.codingapi.txlcn</groupId>
+            <artifactId>txlcn-tc</artifactId>
+            <version>${codingapi.txlcn.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.codingapi.txlcn</groupId>
+            <artifactId>txlcn-tm</artifactId>
+            <version>${codingapi.txlcn.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.codingapi.txlcn</groupId>
+            <artifactId>txlcn-txmsg-netty</artifactId>
+            <version>${codingapi.txlcn.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
